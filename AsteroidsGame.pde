@@ -1,10 +1,41 @@
-//your variable declarations here
+ArrayList <Bullet> shots = new ArrayList<Bullet>();
+Spaceship bob = new Spaceship();
+Star[] nightSky = new Star[200];
 public void setup() 
 {
-  //your code here
+  size(500, 500);
+  for(int i = 0; i < nightSky.length; i++)
+  {
+  nightSky[i] = new Star();
+  }
 }
 public void draw() 
 {
-  //your code here
+  background(0);
+  bob.show();
+  bob.move();
+  for(int i = 0; i < shots.size(); i++)
+  {
+    shots.get(i).move();
+    shots.get(i).show();
+  }
+   for(int i = 0; i < nightSky.length; i++)
+  {
+  nightSky[i].show();
+  }
 }
 
+
+public void keyPressed()
+{
+  if(key == 'a')
+    bob.turn(-10);
+   else if(key == 'd')
+     bob.turn(10);
+   else if(key == 'w')
+     bob.accelerate(0.3);
+   else if(key == 's')
+     bob.hyperspace();
+   else if(key == ' ')
+     shots.add(new Bullet(bob));
+}

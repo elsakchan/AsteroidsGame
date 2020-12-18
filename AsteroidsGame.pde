@@ -1,4 +1,3 @@
-ArrayList <Bullet> shots = new ArrayList<Bullet>();
 Spaceship bob = new Spaceship();
 Star[] nightSky = new Star[200];
 public void setup() 
@@ -14,12 +13,7 @@ public void draw()
   background(0);
   bob.show();
   bob.move();
-  for(int i = 0; i < shots.size(); i++)
-  {
-    shots.get(i).move();
-    shots.get(i).show();
-  }
-   for(int i = 0; i < nightSky.length; i++)
+  for(int i = 0; i < nightSky.length; i++)
   {
   nightSky[i].show();
   }
@@ -36,6 +30,4 @@ public void keyPressed()
      bob.accelerate(0.3);
    else if(key == 's')
      bob.hyperspace();
-   else if(key == ' ')
-     shots.add(new Bullet(bob));
 }
